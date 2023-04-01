@@ -1,0 +1,10 @@
+.container {
+    width: 70%;
+    padding: 5px;
+    border: 1px solid lightpink;
+}
+
+.text {
+    color: crimson;
+    font-size: 3em;
+}
