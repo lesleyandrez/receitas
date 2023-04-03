@@ -1,47 +1,42 @@
-# Astro Starter Kit: Minimal
+# Página de receitas
 
-```
-npm create astro@latest -- --template minimal
-```
+Estou criando essas páginas como um experimento para estudar o [Astro](https://astro.build/). Meu objetivo é descobrir o poder e a facilidade que essa ferramenta oferece para criar páginas simples e de alto desempenho.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+Para o processo de construção, pretendo usar MDX e ReactJS, e em produção, apenas JavaScript Vanilla. Em relação ao CSS, ainda não decidi o que usar, mas a princípio, pretendo utilizar CSS Vanilla e explorar as funcionalidades do Astro para ajudar a isolar o CSS de cada página, evitando conflitos e permitindo a reutilização de partes de código durante o desenvolvimento.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Fique à vontade para explorar minhas receitas e dar feedback sobre a página. Obrigado por visitar!
 
-## 🚀 Project Structure
+## Tecnologia
 
-Inside of your Astro project, you'll see the following folders and files:
+ - Obviamente HTML, CSS e JavaScript
+ - Astro
+ - ReactJS
+ - MDX
+ - Github Pages como hospedagem estática
+ - Travis ou Githu Actions como CI
 
-```
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## Recursos para as páginas de receitas
+ 
+ - [ ] Apresentação do título e breve descrição com fotos
+ - [ ] Fotos da receita pronta
+ - [ ] Evitar que o dispositivo entre em repouso com a página aberta e em foco
+ - [ ] Lista de ingredientes
+    - [ ] Permitir alternar entre unidades de medidas como por exmeplo: xícaras, mililitros ou gramas
+ - [ ] Lista de modo de preparo
+    - [ ] Possibilidade de iniciar um timer em uma determinada etapa
+        - [ ] O timer não pode ser um simples setInterval rodando na thread principal para não perder precisão
+        - [ ] Deve emitir um aviso sonoro ao terminar
+        - [ ] Disparar notificação que o timer se encerrou, mesmo se o usuário sair da página (Background Synchronization API)
+ - [ ] Para ambas as listas
+    - [ ] Possibilidade de marcar/desmarcar os itens
+    - [ ] Persistir o estado de marcado e desmarcado entre atualizações de página
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Comandos
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
+Comandos para rodar o projeto a partir do terminal.
 
 | Command                | Action                                           |
 | :--------------------- | :----------------------------------------------- |
-| `npm install`          | Installs dependencies                            |
-| `npm run dev`          | Starts local dev server at `localhost:3000`      |
-| `npm run build`        | Build your production site to `./dist/`          |
-| `npm run preview`      | Preview your build locally, before deploying     |
-| `npm run astro ...`    | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+| `npm install`          | Instala as dependencias                          |
+| `npm run dev`          | Inicia servidor local em `localhost:3000`        |
+| `npm run build`        | Constrói páginas para produção em `./dist/`      |
