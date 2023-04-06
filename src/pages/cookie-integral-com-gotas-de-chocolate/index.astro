@@ -1,5 +1,12 @@
 ---
 import "../../styles/receita.css";
+import { Image } from "@astrojs/image/components";
+import _01 from "./01.webp";
+import _02 from "./02.webp";
+import _03 from "./03.jpeg";
+import _04 from "./04.jpeg";
+import _05 from "./05.webp";
+import _06 from "./06.jpeg";
 ---
 
 <!DOCTYPE html>
@@ -23,22 +30,22 @@ import "../../styles/receita.css";
             <section class="galeria">
                 <ul>
                     <li>
-                        <img src="/01.webp" />
+                        <Image src={_01} height={400} alt="Imagem ilustrativa de um cookie com gotas de chocolate" />
                     </li>
                     <li>
-                        <img src="/02.webp" />
+                        <Image src={_02} height={400} alt="Imagem ilustrativa de um cookie com gotas de chocolate" />
                     </li>
                     <li>
-                        <img src="/03.jpeg" />
+                        <Image src={_03} height={400} alt="Imagem ilustrativa de um cookie com gotas de chocolate" />
                     </li>
                     <li>
-                        <img src="/04.jpeg" />
+                        <Image src={_04} height={400} alt="Imagem ilustrativa de um cookie com gotas de chocolate" />
                     </li>
                     <li>
-                        <img src="/05.webp" />
+                        <Image src={_05} height={400} alt="Imagem ilustrativa de um cookie com gotas de chocolate" />
                     </li>
                     <li>
-                        <img src="/06.jpeg" />
+                        <Image src={_06} height={400} alt="Imagem ilustrativa de um cookie com gotas de chocolate" />
                     </li>
                 </ul>
             </section>
@@ -68,7 +75,8 @@ import "../../styles/receita.css";
                     <label class="item">
                         <input type="checkbox" />
                         <span>
-                            1/2 xícara de manteiga sem sal, em temperatura ambiente
+                            1/2 xícara de manteiga sem sal, em temperatura
+                            ambiente
                         </span>
                     </label>
                 </li>
