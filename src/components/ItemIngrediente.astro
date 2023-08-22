@@ -1,0 +1,33 @@
+---
+const { title } = Astro.props;
+---
+
+<li>
+    <label class="item">
+        <input type="checkbox" />
+        <span>
+            {title}
+            <slot />
+        </span>
+    </label>
+</li>
+
+<style>
+    .item :checked + span,
+    .feito {
+        text-decoration: line-through;
+        color: #777;
+    }
+
+    li label {
+        padding: 3px 4px;
+        border-radius: 5px;
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+        transition: background-color 0.25s;
+    }
+
+    li label:active {
+        background-color: var(--background-color-2);
+    }
+</style>

@@ -1,221 +1,75 @@
 ---
 import "../../styles/receita.css";
-import { Image } from "@astrojs/image/components";
-import _01 from "./01.webp";
-import _02 from "./02.webp";
-import _03 from "./03.jpeg";
-import _04 from "./04.jpeg";
-import _05 from "./05.webp";
-import _06 from "./06.jpeg";
+import ItemIngrediente from "../../components/ItemIngrediente.astro";
+import { Image, getImage } from "astro:assets";
+import { receita } from "../../data/receita.js";
+
+const imagens = [];
+for (const image of receita.Imagens) {
+  const imagePath = `/assets/${image}`;
+  imagens.push(imagePath);
+}
 ---
 
 <!DOCTYPE html>
 <html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Receita - Cookie Integral com Gotas de Chocolate</title>
-    </head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Receita - {receita.Titulo}</title>
+  </head>
 
-    <body>
-        <article class="wrapper">
-            <h1>Cookie Integral com Gotas de Chocolate</h1>
+  <body>
+    <article class="wrapper">
+      <h1>{receita.Titulo}</h1>
 
-            <p>
-                Uma receita de cookies com farinha de trigo integral e com gotas
-                de chocolate que você pode experimentar!
-            </p>
+      <Fragment set:html={receita.Introducao} />
 
-            <div class="h-space"></div>
+      <div class="h-space"></div>
 
-            <section class="galeria">
-                <ul>
-                    <li>
-                        <Image
-                            src={_01}
-                            height={400}
-                            alt="Imagem ilustrativa de um cookie com gotas de chocolate"
-                        />
-                    </li>
-                    <li>
-                        <Image
-                            src={_02}
-                            height={400}
-                            alt="Imagem ilustrativa de um cookie com gotas de chocolate"
-                        />
-                    </li>
-                    <li>
-                        <Image
-                            src={_03}
-                            height={400}
-                            alt="Imagem ilustrativa de um cookie com gotas de chocolate"
-                        />
-                    </li>
-                    <li>
-                        <Image
-                            src={_04}
-                            height={400}
-                            alt="Imagem ilustrativa de um cookie com gotas de chocolate"
-                        />
-                    </li>
-                    <li>
-                        <Image
-                            src={_05}
-                            height={400}
-                            alt="Imagem ilustrativa de um cookie com gotas de chocolate"
-                        />
-                    </li>
-                    <li>
-                        <Image
-                            src={_06}
-                            height={400}
-                            alt="Imagem ilustrativa de um cookie com gotas de chocolate"
-                        />
-                    </li>
-                </ul>
-            </section>
+      <section class="galeria">
+        <ul>
+          {
+            imagens.map((image) => (
+              <li>
+                <img src={image} height={400} alt="hehe" />
+              </li>
+            ))
+          }
+        </ul>
+      </section>
 
-            <h2>Ingredientes:</h2>
+      <h2>Ingredientes:</h2>
 
-            <ul data-bind="ingredientes" class="lista-ingredientes">
-                <li>
-                    <label class="item">
-                        <input type="checkbox" />
-                        <span> 1 xícara de farinha de trigo integral</span>
-                    </label>
-                </li>
-                <li>
-                    <label class="item">
-                        <input type="checkbox" />
-                        <span> 1/2 colher de chá de bicarbonato de sódio</span>
-                    </label>
-                </li>
-                <li>
-                    <label class="item">
-                        <input type="checkbox" />
-                        <span> 1/4 colher de chá de sal</span>
-                    </label>
-                </li>
-                <li>
-                    <label class="item">
-                        <input type="checkbox" />
-                        <span>
-                            1/2 xícara de manteiga sem sal, em temperatura
-                            ambiente
-                        </span>
-                    </label>
-                </li>
-                <li>
-                    <label class="item">
-                        <input type="checkbox" />
-                        <span> 1/2 xícara de açúcar mascavo</span>
-                    </label>
-                </li>
-                <li>
-                    <label class="item">
-                        <input type="checkbox" />
-                        <span> 1/4 xícara de açúcar granulado</span>
-                    </label>
-                </li>
-                <li>
-                    <label class="item">
-                        <input type="checkbox" />
-                        <span> 1 ovo grande</span>
-                    </label>
-                </li>
-                <li>
-                    <label class="item">
-                        <input type="checkbox" />
-                        <span> 1 colher de chá de essência de baunilha</span>
-                    </label>
-                </li>
-                <li>
-                    <label class="item">
-                        <input type="checkbox" />
-                        <span>
-                            3/4 xícara de gotas de chocolate meio amargo
-                        </span>
-                    </label>
-                </li>
-            </ul>
+      <ul data-bind="ingredientes" class="lista-ingredientes">
+        {
+          receita.Ingredientes.map((Igrediente) => (
+            <ItemIngrediente>{Igrediente}</ItemIngrediente>
+          ))
+        }
+      </ul>
 
-            <h2>Instruções:</h2>
+      <h2>Instruções:</h2>
 
-            <ol>
-                <li>
-                    <label class="item">
-                        Pré-aqueça o forno a 180°C e forre uma assadeira com
-                        papel manteiga.
-                    </label>
-                </li>
-                <li>
-                    <label class="item">
-                        Em uma tigela, misture a farinha de trigo integral, o
-                        bicarbonato de sódio e o sal.
-                    </label>
-                </li>
-                <li>
-                    <label class="item">
-                        Na tigela de uma batedeira, bata a manteiga até ficar
-                        cremosa. Adicione o açúcar mascavo e o açúcar granulado
-                        e bata até obter uma mistura leve e fofa.
-                    </label>
-                </li>
-                <li>
-                    <label class="item">
-                        Adicione o ovo e a essência de baunilha à mistura de
-                        manteiga e misture bem.
-                    </label>
-                </li>
-                <li>
-                    <label class="item">
-                        Adicione a mistura de farinha à mistura de manteiga e
-                        misture até ficar homogêneo.
-                    </label>
-                </li>
-                <li>
-                    <label class="item">
-                        Dobre as gotas de chocolate na massa com uma colher de
-                        pau ou espátula.
-                    </label>
-                </li>
-                <li>
-                    <label class="item">
-                        Faça bolas de massa com cerca de 2 colheres de sopa de
-                        tamanho e coloque na assadeira preparada, deixando
-                        espaço suficiente entre elas.
-                    </label>
-                </li>
-                <li>
-                    <label class="item">
-                        Asse por 12-15 minutos, até que as bordas estejam
-                        levemente douradas.
-                    </label>
-                </li>
-                <li>
-                    <label class="item">
-                        Deixe esfriar na assadeira por alguns minutos antes de
-                        transferir para uma grade para esfriar completamente.
-                    </label>
-                </li>
-                <li><label class="item"> Sirva e aproveite!</label></li>
-            </ol>
+      <ol>
+        {
+          receita.Instrucoes.map((Instrucao) => {
+            return (
+              <li>
+                <label class="item">{Instrucao}</label>
+              </li>
+            );
+          })
+        }
+      </ol>
 
-            <div class="h-space"></div>
+      <div class="h-space"></div>
 
-            <p>
-                Essa receita faz cerca de 16 cookies de tamanho médio. Você pode
-                dobrar a receita se quiser fazer mais. Bom apetite!
-            </p>
+      <Fragment set:html={receita.Encerramento} />
 
-            <div class="h-space"></div>
-            <div class="h-space"></div>
-
-            <script type="module">
-                import { initToggleIngredientes } from "/src/scripts/receita-helper.js";
-                initToggleIngredientes();
-            </script>
-        </article>
-    </body>
+      <div class="h-space"></div>
+      <div class="h-space"></div>
+    </article>
+  </body>
 </html>
