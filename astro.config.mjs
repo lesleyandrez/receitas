@@ -4,7 +4,7 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
     site: 'https://lesleyandrez.github.io',
     base: '/receitas',
-    experimental: {
-        assets: true
+    server: {
+        port: 3000,
     },
 });
