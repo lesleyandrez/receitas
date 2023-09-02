@@ -5,8 +5,12 @@ import { Image, getImage } from "astro:assets";
 import { receita } from "../../data/receita.js";
 
 const imagens = [];
+const baseURL = import.meta.env.BASE_URL?.replace(/\//ig, '');
+const isPROD = import.meta.env.PROD;
+const prefixPath = isPROD ? `/${baseURL}` : '';
+
 for (const image of receita.Imagens) {
-  const imagePath = `/assets/${image}`;
+  const imagePath = `${prefixPath}/assets/${image}`;
   imagens.push(imagePath);
 }
 ---
